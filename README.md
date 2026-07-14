@@ -1,16 +1,48 @@
-# React + Vite
+# dashboard_investimentos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dashboard simples de carteira de investimentos. Acompanha a variação da taxa Selic e simula, com juros compostos e liquidez diária, quanto um valor investido renderia ao longo dos últimos 12 meses.
 
-Currently, two official plugins are available:
+## Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Variação da Selic (meta)** — gráfico de linha com os pontos em que o Copom mudou a taxa nos últimos 12 meses.
+- **Simulador de investimento** — você informa um valor investido e o app calcula a evolução mês a mês, aplicando a taxa Selic diária (série histórica) com juros compostos (liquidez diária).
 
-## React Compiler
+## Fontes de dados
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Os dados vêm em tempo real da API pública do Banco Central do Brasil (SGS — Sistema Gerenciador de Séries Temporais), sem necessidade de chave/token:
 
-## Expanding the ESLint configuration
+- Série 432 — Meta Selic definida pelo Copom
+- Série 11 — Taxa Selic diária
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tecnologias
+
+- [React](https://react.dev) + [Vite](https://vite.dev)
+- [Recharts](https://recharts.org) para os gráficos
+
+## Como rodar o projeto
+
+Pré-requisito: ter o [Node.js](https://nodejs.org) instalado (versão 18 ou superior).
+
+1. Clone o repositório e entre na pasta:
+   ```
+   git clone <url-do-repositorio>
+   cd dashboard_investimentos
+   ```
+
+2. Instale as dependências:
+   ```
+   npm install
+   ```
+
+3. Rode o servidor de desenvolvimento:
+   ```
+   npm run dev
+   ```
+
+4. Abra o endereço mostrado no terminal (geralmente [http://localhost:5173](http://localhost:5173)) no navegador.
+
+## Como usar
+
+1. Aguarde o carregamento do gráfico de variação da Selic.
+2. No campo "Total investido", digite um valor (ex: `1000,00`).
+3. Clique em "Simular" para ver o gráfico de evolução do montante ao longo dos últimos 12 meses.
